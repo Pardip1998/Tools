@@ -52,8 +52,7 @@ if (!empty($svgFiles)) {
 
 // Generate Sprits File
 $sprits_file_contents = '<svg class="svg" xmlns="http://www.w3.org/2000/svg">';
-foreach ($svg_sprits as $key => $value) {
-	print_r($value);
+foreach ($svg_sprits as $key => $value) {	
 	$sprits_file_contents .= '
 		<symbol id="'.$value['id'].'-symbol" viewBox="'.$value['viewbox'].'">
         '.$value['content'].'
@@ -66,14 +65,14 @@ $filename = 'svg-icons.svg';
 
 if (file_exists($filename)) {
     // Attempt to delete the file
-    if (unlink($filename)) {
-        echo "File '$filename' deleted successfully.";
+    if (unlink($filename)) {        
     } else {
-        echo "Failed to delete the file '$filename'.";
+        echo "Something is wrong";
     }
 }
 
 file_put_contents($filename, $sprits_file_contents);
+echo 'Success! File name is <strong>'.$filename.'</strong>';
 
 
 ?>
